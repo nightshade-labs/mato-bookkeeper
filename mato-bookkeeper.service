@@ -1,0 +1,18 @@
+[Unit]
+Description=Mato Bookkeeper
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/bookkeeper
+ExecStart=pnpm start
+Restart=always
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=mato-bookkeeper
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
