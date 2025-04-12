@@ -12,8 +12,8 @@ import os from "os";
 import MatoIDL from "./idl/mato.json" with { type: "json" };
 import type { Mato } from "./types/mato.ts";
 
-process.env.ANCHOR_PROVIDER_URL = clusterApiUrl("devnet");
-process.env.ANCHOR_WALLET = os.homedir() + "/.config/solana/id.json";
+// process.env.ANCHOR_PROVIDER_URL = clusterApiUrl("devnet");
+// process.env.ANCHOR_WALLET = os.homedir() + "/.config/solana/id.json";
 
 const exits = new PublicKey("D467xRNpNHvxbG7nRApDSshnvqVDhL4YjBYqz9TsoKF9");
 const prices = new PublicKey("Dpe9rm2NFSTowGbvrwXccbW7FtGfrQCdu6ogugNW6akK");
@@ -179,7 +179,7 @@ let usdcMint = new PublicKey("4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU");
       }
     });
 
-    await new Promise((f) => setTimeout(f, 4 * 1000));
+    await new Promise((f) => setTimeout(f, 1000));
   }
 })()
   .then(() => console.log("Books updated!"))
