@@ -1,6 +1,6 @@
 import * as anchor from "@coral-xyz/anchor";
 const { BN } = anchor.default;
-import { clusterApiUrl, PublicKey } from "@solana/web3.js";
+import { clusterApiUrl, Connection, Keypair, PublicKey } from "@solana/web3.js";
 
 import {
   getAssociatedTokenAddressSync,
@@ -22,7 +22,13 @@ let solMint = NATIVE_MINT;
 let usdcMint = new PublicKey("4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU");
 
 (async () => {
-  const provider = anchor.AnchorProvider.env();
+  const secretKeyArray = JSON.parse(process.env.ANCHOR_KEYPAIR || "");
+  const secretKey = new Uint8Array(secretKeyArray);
+  const keypair = Keypair.fromSecretKey(secretKey)
+  const wallet = new anchor.Wallet(keypair)
+  const connection = new Connection(process.env.ANCHOR_PROVIDER_URL || clusterApiUrl("devnet"))
+  const provider = new anchor.AnchorProvider(connection, wallet)
+  // const provider = anchor.AnchorProvider.env();
   const program = new anchor.Program(MatoIDL as Mato, provider);
 
   const [market] = PublicKey.findProgramAddressSync(
