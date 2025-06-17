@@ -185,7 +185,7 @@ let usdcMint = new PublicKey("4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU");
       }
     });
 
-    await new Promise((f) => setTimeout(f, 1000));
+    await new Promise((f) => setTimeout(f, 4000));
   }
 })()
   .then(() => console.log("Books updated!"))
