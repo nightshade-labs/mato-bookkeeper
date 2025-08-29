@@ -67,7 +67,7 @@ let usdcMint = new PublicKey("4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU");
       continue;
     }
 
-    let slot = bookkeepingAccount.lastSlot.add(new BN(5000));
+    let slot = bookkeepingAccount.lastSlot.add(new BN(1000));
     while (slot.toNumber() < currentSlot) {
 
       try {
@@ -86,7 +86,7 @@ let usdcMint = new PublicKey("4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU");
         console.log("Error fetching bookkeeping account:", e);
       }
 
-      slot = bookkeepingAccount.lastSlot.add(new BN(5000));
+      slot = bookkeepingAccount.lastSlot.add(new BN(1000));
     }
 
     allPositionsA.forEach(async (position) => {
